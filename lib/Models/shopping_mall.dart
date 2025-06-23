@@ -3,6 +3,7 @@ import 'package:console_shop/Models/product.dart';
 class ShoppingMall {
   List<Product> productList = [];
   int totalPrice = 0;
+  Map<Product, int> cart = {};
 
   ShoppingMall() {
     productList.add(Product("셔츠", 45000));
@@ -19,7 +20,7 @@ class ShoppingMall {
   }
 
   void addToCart(Product product) {
-
+    
   }
 
   void showTotal() {
