@@ -1,5 +1,6 @@
-import 'package:console_shop/console_shop.dart' as console_shop;
+import 'package:console_shop/Models/shopping_mall.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${console_shop.calculate()}!');
+  ShoppingMall shoppingMall = ShoppingMall();
+  shoppingMall.showProducts();
 }
