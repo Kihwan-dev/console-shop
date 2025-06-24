@@ -8,7 +8,7 @@ void main(List<String> arguments) {
 
   String? inputCommand;
 
-  while (inputCommand != "4") {
+  while (inputCommand != "5") {
     print("--------------------------------------------------------------------------------------------------------");
     print("[1] 상품 목록 보기 / [2] 장바구니에 담기 / [3] 장바구니에 담긴 상품의 총 가격 보기 / [4] 프로그램 종료");
     print("--------------------------------------------------------------------------------------------------------");
@@ -26,6 +26,9 @@ void main(List<String> arguments) {
         shoppingMall.printTotalPrice();
         break;
       case "4":
+        print("진짜 갈꺼야?");
+        inputCommand = stdin.readLineSync(encoding: utf8);
+        if (inputCommand == "5") print("다음에 또와 ^^");
         break;
       default:
         print("❗️잘못된 입력입니다. 1~4 중에서 선택해주세요.");
