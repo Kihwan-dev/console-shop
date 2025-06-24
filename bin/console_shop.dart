@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:console_shop/Models/shopping_mall.dart';
 import 'dart:io';
 
@@ -14,15 +16,14 @@ void main(List<String> arguments) {
     print(
         "--------------------------------------------------------------------------------------------------------");
 
-    inputCommand = stdin.readLineSync();
+    inputCommand = stdin.readLineSync(encoding: utf8);
 
     switch (inputCommand) {
       case "1":
-        print("1번 입력");
         shoppingMall.showProducts();
         break;
       case "2":
-        // shoppingMall.addToCart(); // 이런 식으로 기능 추가 가능
+        shoppingMall.addToCart();
         break;
       case "3":
         // shoppingMall.printTotalPrice();
