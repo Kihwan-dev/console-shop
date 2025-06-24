@@ -46,6 +46,18 @@ class ShoppingMall {
   }
 
   void printTotalPrice() {
-    print("다 해서 $totalPrice원");
+    if (cart.isEmpty) {
+      print("아무것도 없는데?");
+    } else {
+      print("${cart.entries.map((e) => "${e.key} ${e.value}개").join(", ")} 담겨있네");
+      print("다 해서 $totalPrice원");
+    }
+  }
+
+  void clearCart() {
+    if (cart.isEmpty) {
+      print("이미 아무것도 없어~");
+    }
+    cart.clear();
   }
 }
