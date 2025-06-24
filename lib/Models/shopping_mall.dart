@@ -23,33 +23,29 @@ class ShoppingMall {
   }
 
   void addToCart() {
-    print("상품 이름을 입력해 주세요 !");
+    print("뭐 담을래?");
     String? productName = stdin.readLineSync(encoding: utf8);
-    if (productName != null && productName.isNotEmpty) {
-      print("선택하신 상품 : $productName");
-    }
-    print("상품 개수를 입력해 주세요 !");
+    print("몇개 담을래?");
     String? productCount = stdin.readLineSync(encoding: utf8);
     try {
-      // if (!(productName == null || productCount == null)) {
-      if (!productList.map((p) => p.name).toList().contains(productName)) {
-        print("productName : $productName");
-        throw FormatException("");
-      } else {
-        print(productName);
-        print(productCount);
-        cart[productName!] = int.parse(productCount!);
-        // cart[Product(productName!, productList.firstWhere((p) => p.name == productName).price)] = int.parse(productCount!);
+      if (!(productName == null || productCount == null)) {
+        if (!productList.map((p) => p.name).toList().contains(productName)) {
+          throw FormatException("");
+        } else {
+          cart[productName] = int.parse(productCount);
+
+          totalPrice += (productList.firstWhere((p) => p.name == productName).price * int.parse(productCount));
+          // cart[Product(productName!, productList.firstWhere((p) => p.name == productName).price)] = int.parse(productCount!);
+        }
       }
-      // }
     } on FormatException {
-      print("입력값이 올바르지 않아요 !");
+      print("입력 똑바로 ㅡㅡ");
     } catch (e) {
       print("");
     }
   }
 
   void printTotalPrice() {
-    print("");
+    print("다 해서 $totalPrice원");
   }
 }

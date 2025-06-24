@@ -3,6 +3,4 @@ class Product {
   int price;
 
   Product(this.name, this.price);
-  
-
 }
