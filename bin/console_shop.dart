@@ -3,43 +3,43 @@ import 'dart:convert';
 import 'package:console_shop/Models/shopping_mall.dart';
 import 'dart:io';
 
+import 'package:console_shop/Models/menu_options.dart';
+
 void main(List<String> arguments) {
   ShoppingMall shoppingMall = ShoppingMall();
 
   String? inputCommand;
+  MenuOptions? selectedOption;
 
-  while (inputCommand != "5") {
-    print(
-        "----------------------------------------------------------------------------------------------------------------------------");
-    print("[1] 상품 목록 보기 / [2] 장바구니에 담기 / [3] 장바구니에 담긴 상품의 총 가격 보기 / [4] 프로그램 종료 / [6] 장바구니 초기화");
-    print(
-        "----------------------------------------------------------------------------------------------------------------------------");
+  while (selectedOption != MenuOptions.realExit) {
+    shoppingMall.printMenu();
 
     inputCommand = stdin.readLineSync(encoding: utf8);
+    selectedOption = parseMenu(inputCommand);
 
-    switch (inputCommand) {
-      case "1":
+    switch (selectedOption) {
+      case MenuOptions.showProducts:
         shoppingMall.showProducts();
         break;
-      case "2":
+      case MenuOptions.addToCart:
         shoppingMall.addToCart();
         break;
-      case "3":
+      case MenuOptions.printTotalPrice:
         shoppingMall.printTotalPrice();
         break;
-      case "4":
+      case MenuOptions.exitPrompt:
         print("진짜 갈꺼야?");
-        inputCommand = stdin.readLineSync(encoding: utf8);
-        if (inputCommand == "5") print("다음에 또와 ^^");
+        var confirm = stdin.readLineSync(encoding: utf8);
+        if (confirm == "5") {
+          print("다음에 또와 ^^");
+          selectedOption = MenuOptions.realExit;
+        }
         break;
-      case "6":
+      case MenuOptions.clearCart:
         shoppingMall.clearCart();
         break;
       default:
         print("어허 눈 똑바로 뜨고 숫자를 잘 봐야지~?");
-        inputCommand = "";
     }
   }
-
-  // shoppingMall.showProducts();
 }
