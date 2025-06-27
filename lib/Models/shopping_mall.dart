@@ -100,5 +100,6 @@ class ShoppingMall {
       print("이미 아무것도 없어~");
     }
     cart.clear();
+    totalPrice = 0;
   }
 }
